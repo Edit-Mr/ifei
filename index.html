@@ -1,56 +1,243 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            color: #f5f5f7;
-            background: #000;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        main{
-            min-height: 100svh;
-            display: flex;
-            padding: 1.5rem;
-            gap:1.5rem;
-        }
-        section{
-            background: #2a2a2a;
-            width: 20em;
-            height: 15em;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        h2{
-            font-size: 2em;
-            margin-bottom: 0.5rem;
-        }
-        h3{
-            font-size: 1.5em;
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <section>
-            <h2>蘇裔非</h2>
-            <h3>1240000 Subs</h3>
-        </section>
-        <section>
-            <h2>錫蘭Ceylan</h2>
-            <h3>1240000</h3>
-        </section>
-    </main>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                color: #f5f5f7;
+                background: #1b1b1b;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+                    "Helvetica Neue", sans-serif;
+            }
+            main {
+                min-height: 100svh;
+                padding: 1.5rem;
+            }
+            .list,
+            .sub {
+                display: flex;
+                gap: 1.5rem;
+                margin: 1.5rem;
+                justify-content: center;
+            }
+            .list {
+                flex-wrap: wrap;
+            }
+            .list > div {
+                background: #282828;
+                width: 20em;
+                height: 15em;
+                padding: 1.5rem;
+                border-radius: 2rem;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                box-shadow: #00000026 0px 5px 15px 0px;
+            }
+            .list > .two {
+                flex-grow: 2;
+                width: 40em;
+                display: flex;
+                flex-direction: row;
+                gap: 1em;
+                flex-wrap: wrap;
+            }
+            .two img {
+                height: 100%;
+                display: block;
+            }
+            .two div {
+                text-align: center;
+                flex: 1;
+                line-height: 1.3;
+            }
+            .two div h3 {
+                margin-bottom: 0.5rem;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 0.2rem;
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 0.5rem;
+            }
+            h3 {
+                font-size: 2em;
+                text-align: center;
+            }
+            .sub {
+                background: #2a2a2a;
+                height: 15em;
+                padding: 1.5rem;
+                border-radius: 2rem;
+                box-shadow: #00000026 0px 5px 15px 0px;
+                align-items: center;
+            }
+            .line {
+                flex: 1;
+                height: 1rem;
+                background: linear-gradient(to right, #ff0000 3%, #fff 3%);
+            }
+            .ceylan {
+                text-align: right;
+            }
+            h1 + h2 {
+                margin-bottom: 1.5rem;
+                font-size: 1rem;
+                text-align: center;
+            }
+            footer {
+                text-align: center;
+            }
+            #comment img {
+                border-radius: 50%;
+            }
+            @media (width < 40rem) {
+                .list > .two {
+                    height: fit-content;
+                    flex-direction: column-reverse;
+                }
+                .two img {
+                    height: unset;
+                    width: 100%;
+                    max-width: 6rem;
+                }
+                .sub {
+                    flex-wrap: wrap;
+                    height: unset;
+                }
+                .line {
+                    order: 1;
+                    width: 100%;
+                    min-width: 15rem;
+                }
+            }
+        </style>
+        <script
+            src="https://kit.fontawesome.com/ca1af7f37f.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <main>
+            <h1>蘇裔非儀錶板</h1>
+            <h2 id="countdown"></h2>
+            <section class="sub">
+                <div class="ifei">
+                    <h2>蘇裔非</h2>
+                    <h3>29000</h3>
+                </div>
+                <div class="line"></div>
+                <div class="ceylan">
+                    <h2>錫蘭Ceylan</h2>
+                    <h3>1240000</h3>
+                </div>
+            </section>
+            <section class="list">
+                <div>
+                    <h2><i class="fa-brands fa-youtube"></i> 總觀看數</h2>
+                    <h3>831081 次</h3>
+                </div>
+                <div>
+                    <h2><i class="fa-brands fa-youtube"></i> 影片數</h2>
+                    <h3>21 支</h3>
+                </div>
+                <div>
+                    <h2><i class="fa-brands fa-youtube"></i> 會員數</h2>
+                    <h3>100 人</h3>
+                </div>
+                <div>
+                    <h2><i class="fa-brands fa-youtube"></i> 最新留言</h2>
+                    <h3>
+                        「學而時習之，不亦說乎？有朋自遠方來，不亦樂乎？」 -
+                        孔子
+                    </h3>
+                </div>
+                <div class="two" id="comment">
+                    <img
+                        src="https://em-tec.github.io/icons/EMprofile.png"
+                        alt=""
+                    />
+                    <div>
+                        <h2><i class="fa-brands fa-youtube"></i> 最新留言</h2>
+                        <h3>
+                            「學而時習之，不亦說乎？有朋自遠方來，不亦樂乎？」 -
+                            孔子
+                        </h3>
+                    </div>
+                </div>
+                <div class="two">
+                    <img
+                        src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
+                        alt=""
+                    />
+                    <div>
+                        <h2><i class="fa-brands fa-youtube"></i> 最新影片</h2>
+                        <h3>大師級的縮圖製作課</h3>
+                        <p>
+                            唉錫蘭應該雇我的. <br /><i
+                                class="fa-regular fa-clock"
+                            ></i>
+                            2023-11-17 08:53:33
+                        </p>
+                    </div>
+                </div>
+                <div class="two">
+                    <img
+                        src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
+                        alt=""
+                    />
+                    <div>
+                        <h2><i class="fa-brands fa-youtube"></i> 最高觀看</h2>
+                        <h3>我做了首來鬧的抖音神曲</h3>
+                        <p>
+                            唉錫蘭應該雇我的. <br /><i
+                                class="fa-regular fa-clock"
+                            ></i>
+                            2023-11-17 08:53:33
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <footer>Copyright © 2023 毛哥EM, 蘇裔非 All Rights Reserved</footer>
+        </main>
+        <script>
+            const countdownElement = document.getElementById("countdown");
+            const targetDate = new Date("2024-11-12");
+
+            function updateCountdown() {
+                const currentDate = new Date();
+                const timeDifference = targetDate - currentDate;
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(
+                    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                const minutes = Math.floor(
+                    (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor(
+                    (timeDifference % (1000 * 60)) / 1000
+                );
+                countdownElement.textContent = `剩 ${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒 超越錫蘭`;
+            }
+
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        </script>
+    </body>
 </html>
