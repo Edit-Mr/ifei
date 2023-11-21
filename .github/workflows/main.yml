@@ -24,7 +24,7 @@ jobs:
           npm install fs
 
       - name: Run Script
-        run: node get_data.js
+        run: node get_data.js ${{ secrets.APIKEY }}
 
       - name: Commit and Push Changes
         run: |

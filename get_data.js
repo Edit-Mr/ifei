@@ -5,7 +5,7 @@ const fs = require("fs");
 
 async function getSubscriberCount() {
     try {
-        const apiKey = "AIzaSyCD0u5WKys4mkmatSVwVxWA0SXJpzAKRqc";
+        const apiKey = process.argv[2];
         const channelId = "UCHhpXyvjFxkKg2WYGKcvxMg";
 
         // Fetch channel statistics
