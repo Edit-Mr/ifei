@@ -79,7 +79,8 @@
                 flex-wrap: wrap;
             }
             .list > div {
-                background: #282828;
+                background-color: #282828;
+                transition: background-color 0.2s ease-out;
                 width: 20em;
                 height: 15em;
                 padding: 1.5rem;
@@ -105,8 +106,12 @@
                 display: block;
             }
             .list > div.feifei {
-                background: url(ifei.webp) no-repeat center;
-                background-size: cover;
+                background: url(ifei.webp) no-repeat center !important;
+                background-size: cover!important;
+                transition: background-size 0.2s ease-out;
+            }
+            .list > div.feifei:hover {
+                background-size: 120%!important;
             }
             .two div {
                 text-align: center;
@@ -163,6 +168,11 @@
             #comment {
                 cursor: pointer;
             }
+            .list > div:hover,
+            .sub:hover {
+                background: #2f2f2f;
+            }
+
             @media (width < 40rem) {
                 .list > .two {
                     height: fit-content;
