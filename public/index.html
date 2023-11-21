@@ -56,6 +56,13 @@
                 font-family: system-ui, -apple-system, BlinkMacSystemFont,
                     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
                     "Helvetica Neue", sans-serif;
+                line-height: 1.5;
+            }
+            span {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             main {
                 min-height: 100svh;
@@ -92,9 +99,14 @@
                 gap: 1em;
                 flex-wrap: wrap;
             }
-            .two img {
+            .two img,
+            .two a {
                 height: 100%;
                 display: block;
+            }
+            .list > div.feifei {
+                background: url(ifei.webp) no-repeat center;
+                background-size: cover;
             }
             .two div {
                 text-align: center;
@@ -138,11 +150,18 @@
                 font-size: 1rem;
                 text-align: center;
             }
-            footer,h2 + h2  {
+            footer,
+            h2 + h2 {
                 text-align: center;
             }
             #comment img {
                 border-radius: 50%;
+            }
+            #mostView,
+            #latestVideo,
+            .feifei,
+            #comment {
+                cursor: pointer;
             }
             @media (width < 40rem) {
                 .list > .two {
@@ -152,6 +171,8 @@
                 .two img {
                     height: unset;
                     width: 100%;
+                }
+                #comment img {
                     max-width: 6rem;
                 }
                 .sub {
@@ -163,6 +184,14 @@
                     width: 100%;
                     min-width: 15rem;
                 }
+                .ceylan,
+                .ifei {
+                    text-align: center;
+                }
+            }
+            a {
+                color: #f5f5f7;
+                text-decoration: none;
             }
         </style>
         <script
@@ -178,81 +207,77 @@
             <section class="sub">
                 <div class="ifei">
                     <h2>蘇裔非</h2>
-                    <h3>29000</h3>
+                    <h3 id="ifeiSub"></h3>
                 </div>
                 <div class="line"></div>
                 <div class="ceylan">
                     <h2>錫蘭Ceylan</h2>
-                    <h3>1240000</h3>
+                    <h3 id="ceylanSub"></h3>
                 </div>
             </section>
             <section class="list">
                 <div>
                     <h2><i class="fa-brands fa-youtube"></i> 總觀看數</h2>
-                    <h3>831081 次</h3>
+                    <h3 id="viewCount"></h3>
                 </div>
                 <div>
                     <h2><i class="fa-brands fa-youtube"></i> 影片數</h2>
-                    <h3>21 支</h3>
+                    <h3 id="videoCount"></h3>
                 </div>
-                <div>
-                    <h2><i class="fa-brands fa-youtube"></i> 會員數</h2>
-                    <h3>100 人</h3>
-                </div>
+                <div
+                    class="feifei"
+                    onclick="window.open('https://www.youtube.com/@ifeisu_', '_blank')"
+                ></div>
                 <div>
                     <h2><i class="fa-brands fa-youtube"></i> 總觀看時長</h2>
-                    <h3>100 小時</h3>
+                    <h3 id="totalWatchHours"></h3>
                 </div>
                 <div class="two" id="comment">
-                    <img
-                        src="https://em-tec.github.io/icons/EMprofile.png"
-                        alt=""
-                    />
+                    <a href="">
+                        <img
+                            src="https://em-tec.github.io/icons/EMprofile.png"
+                            alt=""
+                    /></a>
                     <div>
-                        <h2><i class="fa-brands fa-youtube"></i> 最新留言</h2>
-                        <h3>
-                            「學而時習之，不亦說乎？有朋自遠方來，不亦樂乎？」 -
-                            孔子
-                        </h3>
+                        <h2>
+                            <i class="fa-brands fa-youtube"></i> 最新影片留言
+                        </h2>
+                        <h3></h3>
                     </div>
                 </div>
-                <div class="two">
+                <div class="two" id="latestVideo">
                     <img
                         src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
                         alt=""
                     />
                     <div>
                         <h2><i class="fa-brands fa-youtube"></i> 最新影片</h2>
-                        <h3>大師級的縮圖製作課</h3>
-                        <p>
-                            唉錫蘭應該雇我的. <br /><i
-                                class="fa-regular fa-clock"
-                            ></i>
-                            2023-11-17 08:53:33
-                        </p>
+                        <h3></h3>
+                        <p></p>
                     </div>
                 </div>
-                <div class="two">
+                <div class="two" id="mostView">
                     <img
                         src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
                         alt=""
                     />
                     <div>
                         <h2><i class="fa-brands fa-youtube"></i> 最高觀看</h2>
-                        <h3>我做了首來鬧的抖音神曲</h3>
-                        <p>
-                            唉錫蘭應該雇我的. <br /><i
-                                class="fa-regular fa-clock"
-                            ></i>
-                            2023-11-17 08:53:33
-                        </p>
+                        <h3></h3>
+                        <p></p>
                     </div>
                 </div>
             </section>
-            <footer>Copyright © 2023 毛哥EM, 蘇裔非 All Rights Reserved</footer>
+            <footer>
+                <div id="date"></div>
+                每半小時更新資料<br />
+                © 2023 <a href="https://elvismao.com/">毛哥EM</a>,
+                <a href="https://www.youtube.com/@ifeisu_">蘇裔非</a> All Rights
+                Reserved
+            </footer>
         </main>
         <script>
-            const countdownElement = document.getElementById("countdown");
+            const countdownElement = document.querySelector("#countdown");
             const targetDate = new Date("2024-11-12");
 
             function updateCountdown() {
@@ -274,10 +299,79 @@
             // Update countdown every second
             setInterval(updateCountdown, 1000);
             updateCountdown();
+            fetch(
+                "https://raw.githubusercontent.com/Edit-Mr/ifeiceylan/main/public/data.json"
+            )
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector("#ifeiSub").textContent =
+                        data.ifeiSub.toLocaleString();
+                    document.querySelector("#ceylanSub").textContent =
+                        data.ceylanSub.toLocaleString();
+                    document.querySelector("#viewCount").textContent =
+                        data.viewCount.toLocaleString() + " 次";
+                    document.querySelector("#videoCount").textContent =
+                        data.videoCount.toLocaleString() + " 支";
+                    document.querySelector("#totalWatchHours").textContent =
+                        data.totalWatchHours.toLocaleString() + " 小時";
+                    document.querySelector("#comment h3").textContent =
+                        "「" +
+                        data.latestComment.comment +
+                        "」- " +
+                        data.latestComment.author;
+                    document.querySelector("#comment img").src =
+                        data.latestComment.authorProfilePhoto;
+                    document.querySelector("#comment a").href =
+                        data.latestComment.authorProfile;
+                    document.querySelector("#comment").onclick = () => {
+                        window.open(data.latestComment.authorProfile, "_blank");
+                    };
+                    document.querySelector("#latestVideo").onclick = () => {
+                        window.open(
+                            "https://www.youtube.com/watch?v=" +
+                                data.latestVideo.videoId,
+                            "_blank"
+                        );
+                    };
+                    document.querySelector("#latestVideo h3").textContent =
+                        data.latestVideo.title;
+                    document.querySelector("#latestVideo img").src =
+                        data.latestVideo.thumbnail;
+                    document.querySelector("#latestVideo p").innerHTML =
+                        `<span>` +
+                        data.latestVideo.description +
+                        `</span>` +
+                        `<i
+                                            class="fa-regular fa-clock"
+                                        ></i> ` +
+                        data.latestVideo.releaseDate;
+                    document.querySelector("#mostView").onclick = () => {
+                        window.open(
+                            "https://www.youtube.com/watch?v=" +
+                                data.mostView.videoId,
+                            "_blank"
+                        );
+                    };
+                    document.querySelector("#mostView h3").textContent =
+                        data.mostView.title;
+                    document.querySelector("#mostView img").src =
+                        data.mostView.thumbnail;
+                    document.querySelector("#mostView p").innerHTML =
+                        `<span>` +
+                        data.mostView.description +
+                        `</span>` +
+                        `<i
+                                            class="fa-regular fa-clock"
+                                        ></i> ` +
+                        data.mostView.releaseDate;
+                    console.log(data.date);
+                    document.querySelector("#date").innerHTML =
+                        "更新日期: " + data.date;
+                });
 
-
-
-            //url fetch from https://raw.githubusercontent.com/Edit-Mr/ifeiceylan/main/public/data.json
+            function formatNumberWithCommas(number) {
+                return number.toLocaleString();
+            }
         </script>
     </body>
 </html>
