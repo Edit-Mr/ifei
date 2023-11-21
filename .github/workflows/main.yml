@@ -1,0 +1,33 @@
+name: Get Subscriber Count
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get_subscriber_count:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Script
+        run: node get_subscriber_count.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data.json
+          git commit -m "Update subscriber count"
+          git push
