@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '*/30 * * * *'
 
 jobs:
   get_subscriber_count:
