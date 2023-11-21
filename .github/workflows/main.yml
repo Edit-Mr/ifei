@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Script
-        run: node get_subscriber_count.js
+        run: node get_data.js
 
       - name: Commit and Push Changes
         run: |
