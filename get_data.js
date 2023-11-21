@@ -51,7 +51,7 @@ async function getSubscriberCount() {
 
         // Fetch the latest comment
         const latestCommentResponse = await axios.get(
-            `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${latestVideo.videoId}&order=time&maxResults=5&key=${apiKey}`
+            `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${latestVideo.videoId}&order=time&maxResults=1&key=${apiKey}`
         );
         const latestComment = {
             comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
