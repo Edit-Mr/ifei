@@ -49,13 +49,24 @@ async function getSubscriberCount() {
             releaseDate: latestVideoResponse.data.items[0].snippet.publishedAt,
         };
 
+        // Fetch the latest comment
+        const latestCommentResponse = await axios.get(
+            `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&channelId=${channelId}&order=time&maxResults=1&key=${apiKey}`
+        );
+        const latestComment = {
+            comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
+            author: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorDisplayName,
+            authorProfile: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorChannelUrl,
+            authorProfilePhoto: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorProfileImageUrl,
+        };
+
         // Fetch the total watch hours
         const videosResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=US&maxResults=100&key=${apiKey}`
         );
         const videos = videosResponse.data.items;
         let totalWatchHours = 0;
-        videos.forEach(video => {
+        videos.forEach((video) => {
             const duration = video.contentDetails.duration;
             const hours = parseInt(duration.match(/(\d+)H/)?.[1]) || 0;
             const minutes = parseInt(duration.match(/(\d+)M/)?.[1]) || 0;
@@ -75,13 +86,14 @@ async function getSubscriberCount() {
             totalWatchHours: parseFloat(totalWatchHours),
             mostView: mostView,
             latestVideo: latestVideo,
+            latestComment: latestComment,
         };
 
         fs.writeFileSync("./public/data.json", JSON.stringify(data, null, 2));
-    } catch (error) {
+        } catch (error) {
         console.error("Error:", error.message);
         process.exit(1);
-    }
-}
+        }
+        }
 
-getSubscriberCount();
+        getSubscriberCount();
