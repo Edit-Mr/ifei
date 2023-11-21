@@ -19,7 +19,9 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install axios
+          npm install fs
 
       - name: Run Script
         run: node get_data.js
