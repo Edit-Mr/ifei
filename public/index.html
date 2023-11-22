@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>蘇裔非儀錶板 - 2024超越錫蘭</title>
+        <title>#2024超越錫蘭 - 即時追蹤蘇裔非與錫蘭的訂閱數差距</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta
             name="description"
@@ -66,17 +66,17 @@
             }
             main {
                 min-height: 100svh;
-                padding: 1.5rem;
             }
             .list,
             .sub {
                 display: flex;
                 gap: 1.5rem;
-                margin: 1.5rem;
+                margin: 1.5rem 0;
                 justify-content: center;
             }
             .list {
                 flex-wrap: wrap;
+                margin: 1.5rem;
             }
             .list > div {
                 background-color: #282828;
@@ -84,14 +84,22 @@
                 width: 20em;
                 height: 15em;
                 padding: 1.5rem;
-                border-radius: 2rem;
                 flex-grow: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
                 box-shadow: #00000026 0px 5px 15px 0px;
+                transition: filter 1s ease-out, transform 1s ease-out;
+                filter: opacity(0);
+                transform: translateY(2em);
             }
+
+            .list > div.ed {
+                filter: opacity(1);
+                transform: translateY(0);
+            }
+
             .list > .two {
                 flex-grow: 2;
                 width: 40em;
@@ -107,11 +115,11 @@
             }
             .list > div.feifei {
                 background: url(ifei.webp) no-repeat center !important;
-                background-size: cover!important;
+                background-size: cover !important;
                 transition: background-size 0.2s ease-out;
             }
             .list > div.feifei:hover {
-                background-size: 120%!important;
+                background-size: 120% !important;
             }
             .two div {
                 text-align: center;
@@ -121,10 +129,33 @@
             .two div h3 {
                 margin-bottom: 0.5rem;
             }
+            .title {
+                position: relative;
+            }
             h1 {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+            }
+            h1,
+            h1 + div {
                 text-align: center;
                 margin-bottom: 0.2rem;
-                font-size: 2.5rem;
+                font-size: 10vw;
+                font-weight: 800;
+            }
+            h1 + div {
+                position: absolute;
+                clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+                color: transparent;
+                background: -webkit-linear-gradient(
+                    177deg,
+                    black 53%,
+                    #fff 65%
+                );
+                background: linear-gradient(177deg, black 53%, #fff 65%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                transform: translateX(-0.02em);
+                top: 0;
             }
             h2 {
                 font-size: 1.5em;
@@ -135,32 +166,39 @@
                 text-align: center;
             }
             .sub {
-                background: #2a2a2a;
+                background: #2f2f2f;
                 height: 15em;
-                padding: 1.5rem;
-                border-radius: 2rem;
+                padding: 1.5rem 3rem;
                 box-shadow: #00000026 0px 5px 15px 0px;
                 align-items: center;
             }
             .line {
                 flex: 1;
                 height: 1rem;
-                background: linear-gradient(to right, #ff0000 3%, #fff 3%);
+                background: #fff;
+                position: relative;
+            }
+            .line div {
+                background: red;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                transition: width 1s ease-out;
             }
             .ceylan {
                 text-align: right;
             }
-            h1 + h2 {
-                margin-bottom: 1.5rem;
+            h2.discription {
+                color: #000;
+                position: absolute;
                 font-size: 1rem;
-                text-align: center;
+                z-index: -1;
             }
             footer,
             h2 + h2 {
                 text-align: center;
-            }
-            #comment img {
-                border-radius: 50%;
             }
             #mostView,
             #latestVideo,
@@ -168,9 +206,24 @@
             #comment {
                 cursor: pointer;
             }
-            .list > div:hover,
-            .sub:hover {
+            .list > div:hover {
                 background: #2f2f2f;
+            }
+
+            header {
+                height: calc(100svh - 0vh);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background: #000;
+            }
+            header h2:first-child {
+                margin: 0;
+                font-size: 3rem;
+            }
+            .title {
+                position: relative;
             }
 
             @media (width < 40rem) {
@@ -188,6 +241,7 @@
                 .sub {
                     flex-wrap: wrap;
                     height: unset;
+                    padding: 1.5rem;
                 }
                 .line {
                     order: 1;
@@ -202,6 +256,36 @@
             a {
                 color: #f5f5f7;
                 text-decoration: none;
+            }
+            #countdown {
+                font-style: italic;
+            }
+            .swap {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgb(0, 0, 0);
+                top: 0;
+                animation: swap 1s ease forwards;
+            }
+            @keyframes swap {
+                from {
+                    transform: translateX(0%);
+                }
+                to {
+                    transform: translateX(100%);
+                }
+            }
+            footer {
+                margin-bottom: 1rem;
+            }
+            footer i {
+                margin: 0.25rem;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+            }
+            .sub.ed .line div {
+                width: var(--width);
             }
         </style>
         <script
@@ -226,15 +310,24 @@
     </head>
     <body>
         <main>
-            <h1>蘇裔非儀錶板</h1>
-            <h2>即時追蹤蘇裔非與錫蘭的訂閱數差距，與各項 YouTube 資訊</h2>
-            <h2 id="countdown"></h2>
+            <header>
+                <h2>蘇裔非</h2>
+                <div class="title">
+                    <h1>#2024超越錫蘭</h1>
+                    <div>#2024超越錫蘭</div>
+                    <div class="swap"></div>
+                </div>
+                <h2 class="discription">
+                    即時追蹤蘇裔非與錫蘭的訂閱數差距，與各項 YouTube 資訊
+                </h2>
+                <h2 id="countdown"></h2>
+            </header>
             <section class="sub">
                 <div class="ifei">
                     <h2>蘇裔非</h2>
                     <h3 id="ifeiSub"></h3>
                 </div>
-                <div class="line"></div>
+                <div class="line"><div></div></div>
                 <div class="ceylan">
                     <h2>錫蘭Ceylan</h2>
                     <h3 id="ceylanSub"></h3>
@@ -254,15 +347,10 @@
                     onclick="window.open('https://www.youtube.com/@ifeisu_', '_blank')"
                 ></div>
                 <div>
-                    <h2><i class="fa-brands fa-youtube"></i> 總觀看時長</h2>
+                    <h2><i class="fa-brands fa-youtube"></i> 總影片時長</h2>
                     <h3 id="totalWatchHours"></h3>
                 </div>
                 <div class="two" id="comment">
-                    <a href="">
-                        <img
-                            src="https://em-tec.github.io/icons/EMprofile.png"
-                            alt=""
-                    /></a>
                     <div>
                         <h2>
                             <i class="fa-brands fa-youtube"></i> 最新影片留言
@@ -294,6 +382,25 @@
                 </div>
             </section>
             <footer>
+                <a href="https://www.youtube.com/@ifeisu_">
+                    <i class="fa-brands fa-youtube"></i></a
+                ><a href="https://instagram.com/ifeisu_"
+                    ><i class="fa-brands fa-instagram"></i></a
+                ><a href="https://discord.gg/ifeisu">
+                    <i class="fa-brands fa-discord"></i></a
+                ><a href="https://twitter.com/ifeisu_"
+                    ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+                <a href="mailto:ifei.su@icloud.com"
+                    ><i class="fa-regular fa-envelope"></i
+                ></a>
+                <a href="https://www.tiktok.com/@ifeisu07">
+                    <i class="fa-brands fa-tiktok"></i
+                ></a>
+                <a href="https://www.twitch.tv/ifeisu"
+                    ><i class="fa-brands fa-twitch"></i
+                ></a>
+                <br />
                 <div id="date"></div>
                 每半小時更新資料<br />
                 © 2023 <a href="https://elvismao.com/">毛哥EM</a>,
@@ -318,7 +425,7 @@
                 const seconds = Math.floor(
                     (timeDifference % (1000 * 60)) / 1000
                 );
-                countdownElement.textContent = `剩 ${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒 超越錫蘭`;
+                countdownElement.textContent = `剩 ${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
             }
 
             // Update countdown every second
@@ -344,10 +451,6 @@
                         data.latestComment.comment +
                         "」- " +
                         data.latestComment.author;
-                    document.querySelector("#comment img").src =
-                        data.latestComment.authorProfilePhoto;
-                    document.querySelector("#comment a").href =
-                        data.latestComment.authorProfile;
                     document.querySelector("#comment").onclick = () => {
                         window.open(data.latestComment.authorProfile, "_blank");
                     };
@@ -392,11 +495,35 @@
                     console.log(data.date);
                     document.querySelector("#date").innerHTML =
                         "更新日期: " + data.date;
+                    document.querySelector(".sub").style =
+                        "--width: " +
+                        (data.ifeiSub / (data.ifeiSub + data.ceylanSub)) * 100 +
+                        "%;";
                 });
 
             function formatNumberWithCommas(number) {
                 return number.toLocaleString();
             }
+
+            //AOS
+
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return rect.bottom < 0 || rect.top > window.innerHeight;
+            }
+
+            function addClassToVisibleElements() {
+                var aosElements =
+                    document.querySelectorAll(".list > div, .sub");
+                aosElements.forEach(function (aosElement) {
+                    if (!isElementInViewport(aosElement))
+                        aosElement.classList.add("ed");
+                    else aosElement.classList.remove("ed");
+                });
+            }
+
+            document.addEventListener("scroll", addClassToVisibleElements);
+            addClassToVisibleElements();
         </script>
     </body>
 </html>
