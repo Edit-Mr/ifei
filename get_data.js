@@ -60,17 +60,33 @@ async function getSubscriberCount() {
         console.log(latestVideo);
 
         // Fetch the latest comment
-        const latestCommentResponse = await axios.get(
-            `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${latestVideo.videoId}&order=time&maxResults=1&key=${apiKey}`
-        );
-        console.log(latestCommentResponse.data.items[0])
-        const latestComment = {
-            comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
-            author: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorDisplayName,
-            authorProfile: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorChannelUrl,
-            authorProfilePhoto: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorProfileImageUrl,
-        };
+        let latestCommentResponse;
+        let latestComment;
 
+        for (let i = 0; i < latestVideoResponse.data.items.length; i++) {
+            const video = latestVideoResponse.data.items[i];
+            try {
+                latestCommentResponse = await axios.get(
+                    `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${video.id.videoId}&order=time&maxResults=1&key=${apiKey}`
+                );
+                latestComment = {
+                    comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
+                    author: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorDisplayName,
+                    authorProfile: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorChannelUrl,
+                    authorProfilePhoto: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorProfileImageUrl,
+                };
+                break;
+            } catch (error) {
+                if (error.response && error.response.status === 403) {
+                    console.log(`Permission denied for video ${video.id.videoId}. Trying the next video...`);
+                } else {
+                    console.error("Error:", error.message);
+                    process.exit(1);
+                }
+            }
+        }
+
+        console.log(latestComment);
         const data = {
             ifeiSub: parseInt(ifeiSub),
             ceylanSub: parseInt(ceylanSub),
