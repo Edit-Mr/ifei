@@ -38,17 +38,26 @@ async function getSubscriberCount() {
 
         // Fetch the latest video
         const latestVideoResponse = await axios.get(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&maxResults=1&key=${apiKey}`
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&maxResults=10&key=${apiKey}`
         );
-        console.log(latestVideoResponse.data.items[0])
-        const latestVideo = {
-            title: latestVideoResponse.data.items[0].snippet.title,
-            videoId: latestVideoResponse.data.items[0].id.videoId,
-            description: latestVideoResponse.data.items[0].snippet.description,
-            thumbnail:
-                latestVideoResponse.data.items[0].snippet.thumbnails.high.url,
-            releaseDate: latestVideoResponse.data.items[0].snippet.publishedAt,
-        };
+
+        // Find the latest non-streaming or non-shorts video
+        let latestVideo;
+        for (let i = 0; i < latestVideoResponse.data.items.length; i++) {
+            const video = latestVideoResponse.data.items[i];
+            if (video.snippet.liveBroadcastContent !== "live" && video.snippet.categoryId !== "10") {
+                latestVideo = {
+                    title: video.snippet.title,
+                    videoId: video.id.videoId,
+                    description: video.snippet.description,
+                    thumbnail: video.snippet.thumbnails.high.url,
+                    releaseDate: video.snippet.publishedAt,
+                };
+                break;
+            }
+        }
+
+        console.log(latestVideo);
 
         // Fetch the latest comment
         const latestCommentResponse = await axios.get(
