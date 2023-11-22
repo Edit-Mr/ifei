@@ -12,6 +12,7 @@ async function getSubscriberCount() {
         const response = await axios.get(
             `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`
         );
+        console.log(response.data.items[0].statistics);
         const ifeiSub = response.data.items[0].statistics.subscriberCount;
         const viewCount = response.data.items[0].statistics.viewCount;
         const videoCount = response.data.items[0].statistics.videoCount;
@@ -27,6 +28,7 @@ async function getSubscriberCount() {
         const mostViewResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=viewCount&type=video&maxResults=1&key=${apiKey}`
         );
+        console.log(mostViewResponse.data.items[0].snippet);
         const mostView = {
             title: mostViewResponse.data.items[0].snippet.title,
             videoId: mostViewResponse.data.items[0].id.videoId,
@@ -40,12 +42,15 @@ async function getSubscriberCount() {
         const latestVideoResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&maxResults=10&key=${apiKey}`
         );
-
+        console.log(latestVideoResponse.data.items[0].snippet);
         // Find the latest non-streaming or non-shorts video
         let latestVideo;
         for (let i = 0; i < latestVideoResponse.data.items.length; i++) {
             const video = latestVideoResponse.data.items[i];
-            if (video.snippet.liveBroadcastContent !== "live" && video.snippet.categoryId !== "10") {
+            if (
+                video.snippet.liveBroadcastContent !== "live" &&
+                video.snippet.categoryId !== "10"
+            ) {
                 latestVideo = {
                     title: video.snippet.title,
                     videoId: video.id.videoId,
@@ -69,16 +74,26 @@ async function getSubscriberCount() {
                 latestCommentResponse = await axios.get(
                     `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${video.id.videoId}&order=time&maxResults=1&key=${apiKey}`
                 );
+                console.log(latestCommentResponse.data.items[0].snippet);
                 latestComment = {
-                    comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
-                    author: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorDisplayName,
-                    authorProfile: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorChannelUrl,
-                    authorProfilePhoto: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorProfileImageUrl,
+                    comment:
+                        latestCommentResponse.data.items[0].snippet
+                            .topLevelComment.snippet.textDisplay,
+                    author: latestCommentResponse.data.items[0].snippet
+                        .topLevelComment.snippet.authorDisplayName,
+                    authorProfile:
+                        latestCommentResponse.data.items[0].snippet
+                            .topLevelComment.snippet.authorChannelUrl,
+                    authorProfilePhoto:
+                        latestCommentResponse.data.items[0].snippet
+                            .topLevelComment.snippet.authorProfileImageUrl,
                 };
                 break;
             } catch (error) {
                 if (error.response && error.response.status === 403) {
-                    console.log(`Permission denied for video ${video.id.videoId}. Trying the next video...`);
+                    console.log(
+                        `Permission denied for video ${video.id.videoId}. Trying the next video...`
+                    );
                 } else {
                     console.error("Error:", error.message);
                     process.exit(1);
@@ -101,10 +116,10 @@ async function getSubscriberCount() {
         };
 
         fs.writeFileSync("./public/data.json", JSON.stringify(data, null, 2));
-        } catch (error) {
+    } catch (error) {
         console.error("Error:", error.message);
         process.exit(1);
-        }
-        }
+    }
+}
 
-        getSubscriberCount();
+getSubscriberCount();

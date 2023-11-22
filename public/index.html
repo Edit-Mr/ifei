@@ -77,7 +77,7 @@
                 <h2 class="discription">
                     即時追蹤蘇裔非與錫蘭的訂閱數差距，與各項 YouTube 資訊
                 </h2>
-                <h2 id="countdown"></h2>
+                <h2 id="countdown" class="aos fadeIn"></h2>
             </header>
             <section class="sub">
                 <h2 class="aos fadeIn">訂閱數比較</h2>
@@ -95,57 +95,69 @@
             </section>
 
             <section>
-                <h2><i class="fa-brands fa-youtube"></i> 總觀看數</h2>
-                <h3 id="viewCount"></h3>
+                <h2><i class="fa-brands fa-youtube"></i> 蘇裔非總觀看數</h2>
+                <h3
+                    id="viewCount"
+                    class="bigNumber aos fadeIn count"
+                    unit=""     amount="0"
+                ></h3>
             </section>
             <section>
                 <h2><i class="fa-brands fa-youtube"></i> 影片數</h2>
-                <h3 id="videoCount"></h3>
+                <h3
+                    id="videoCount"
+                    class="bigNumber aos fadeIn count"
+                    amount="0"
+                    unit="支"
+                ></h3>
             </section>
             <section class="two" id="comment">
+                <h2><i class="fa-brands fa-youtube"></i> 最新影片留言</h2>
                 <div>
-                    <h2><i class="fa-brands fa-youtube"></i> 最新影片留言</h2>
-                    <h3></h3>
+                    <i class="fa-solid fa-quote-left"></i>
+                    <h3 class="aos fadeIn"></h3>
+                    <div>
+                        <h4 class="aos fadeIn"></h4>
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
                 </div>
             </section>
             <section class="two" id="latestVideo">
-                <img
-                    src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
-                    alt=""
-                />
                 <h2><i class="fa-brands fa-youtube"></i> 最新影片</h2>
-                <h3></h3>
-                <p></p>
+                <img class="aos fadeIn" />
+                <h3 class="aos fadeIn"></h3>
+                <p class="aos fadeIn"></p>
             </section>
             <section class="two" id="mostView">
-                <img
-                    src="https://i.ytimg.com/vi/9DCN4e9XJ-4/hqdefault.jpg"
-                    alt=""
-                />
                 <h2><i class="fa-brands fa-youtube"></i> 最高觀看</h2>
-                <h3></h3>
-                <p></p>
+                <img class="aos fadeIn" />
+                <h3 class="aos fadeIn"></h3>
+                <p class="aos fadeIn"></p>
+            </section>
+            <section class="social">
+                <h2 class="full-width">支持蘇裔非</h2>
+                <div class="full-width aos fadeIn">
+                    <a href="https://www.youtube.com/@ifeisu_">
+                        <i class="fa-brands fa-youtube"></i></a
+                    ><a href="https://instagram.com/ifeisu_"
+                        ><i class="fa-brands fa-instagram"></i></a
+                    ><a href="https://discord.gg/ifeisu">
+                        <i class="fa-brands fa-discord"></i></a
+                    ><a href="https://twitter.com/ifeisu_"
+                        ><i class="fa-brands fa-x-twitter"></i
+                    ></a>
+                    <a href="mailto:ifei.su@icloud.com"
+                        ><i class="fa-regular fa-envelope"></i
+                    ></a>
+                    <a href="https://www.tiktok.com/@ifeisu07">
+                        <i class="fa-brands fa-tiktok"></i
+                    ></a>
+                    <a href="https://www.twitch.tv/ifeisu"
+                        ><i class="fa-brands fa-twitch"></i
+                    ></a>
+                </div>
             </section>
             <footer>
-                <a href="https://www.youtube.com/@ifeisu_">
-                    <i class="fa-brands fa-youtube"></i></a
-                ><a href="https://instagram.com/ifeisu_"
-                    ><i class="fa-brands fa-instagram"></i></a
-                ><a href="https://discord.gg/ifeisu">
-                    <i class="fa-brands fa-discord"></i></a
-                ><a href="https://twitter.com/ifeisu_"
-                    ><i class="fa-brands fa-x-twitter"></i
-                ></a>
-                <a href="mailto:ifei.su@icloud.com"
-                    ><i class="fa-regular fa-envelope"></i
-                ></a>
-                <a href="https://www.tiktok.com/@ifeisu07">
-                    <i class="fa-brands fa-tiktok"></i
-                ></a>
-                <a href="https://www.twitch.tv/ifeisu"
-                    ><i class="fa-brands fa-twitch"></i
-                ></a>
-                <br />
                 <div id="date"></div>
                 每半小時更新資料<br />
                 © 2023 <a href="https://elvismao.com/">毛哥EM</a>,
@@ -185,17 +197,18 @@
                         data.ifeiSub.toLocaleString();
                     document.querySelector("#ceylanSub").textContent =
                         data.ceylanSub.toLocaleString();
-                    document.querySelector("#viewCount").textContent =
-                        data.viewCount.toLocaleString() + " 次";
-                    document.querySelector("#videoCount").textContent =
-                        data.videoCount.toLocaleString() + " 支";
+                    document
+                        .querySelector("#viewCount")
+                        .setAttribute("amount", data.viewCount);
+                    document
+                        .querySelector("#videoCount")
+                        .setAttribute("amount", data.videoCount);
                     // document.querySelector("#totalWatchHours").textContent =
                     //     data.totalWatchHours.toLocaleString() + " 小時";
-                    document.querySelector("#comment h3").textContent =
-                        "「" +
-                        data.latestComment.comment +
-                        "」- " +
-                        data.latestComment.author;
+                    document.querySelector("#comment h3").innerHTML =
+                        data.latestComment.comment;
+                    document.querySelector("#comment h4").innerHTML =
+                        "-" + data.latestComment.author;
                     document.querySelector("#comment").onclick = () => {
                         window.open(data.latestComment.authorProfile, "_blank");
                     };
@@ -260,14 +273,42 @@
             function addClassToVisibleElements() {
                 var aosElements = document.querySelectorAll(".aos");
                 aosElements.forEach(function (aosElement) {
-                    if (!isElementInViewport(aosElement))
+                    if (!isElementInViewport(aosElement)) {
                         aosElement.classList.add("ed");
-                    else aosElement.classList.remove("ed");
+                        if (
+                            aosElement.classList.contains("count") &&
+                            !aosElement.classList.contains("over")
+                        )
+                            updateCount(aosElement);
+                    } else aosElement.classList.remove("ed");
                 });
             }
 
-            document.addEventListener("scroll", addClassToVisibleElements);
-            addClassToVisibleElements();
+            window.onload = function () {
+                document.addEventListener("scroll", addClassToVisibleElements);
+                addClassToVisibleElements();
+            };
+            function updateCount(aosElement) {
+                var count = 0;
+                var targetCount = aosElement.getAttribute("amount");
+                if(targetCount == 0) return;
+                aosElement.classList.add("over");
+                var unit = aosElement.getAttribute("unit");
+                const each = Math.floor(targetCount / 20);
+                const interval = setInterval(function () {
+                    aosElement.textContent =
+                        count.toLocaleString() + " " + unit;
+                    count += each;
+                    if (count > targetCount) {
+                        clearInterval(interval);
+                        aosElement.textContent =
+                            parseInt(targetCount).toLocaleString() + " " + unit;
+                        console.log(
+                            parseInt(targetCount).toLocaleString() + " " + unit
+                        );
+                    }
+                }, 20); // Adjusting interval based on target count
+            }
         </script>
     </body>
 </html>
