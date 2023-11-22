@@ -40,6 +40,7 @@ async function getSubscriberCount() {
         const latestVideoResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&maxResults=1&key=${apiKey}`
         );
+        console.log(latestVideoResponse.data.items[0])
         const latestVideo = {
             title: latestVideoResponse.data.items[0].snippet.title,
             videoId: latestVideoResponse.data.items[0].id.videoId,
@@ -53,27 +54,13 @@ async function getSubscriberCount() {
         const latestCommentResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${latestVideo.videoId}&order=time&maxResults=1&key=${apiKey}`
         );
+        console.log(latestCommentResponse.data.items[0])
         const latestComment = {
             comment: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.textDisplay,
             author: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorDisplayName,
             authorProfile: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorChannelUrl,
             authorProfilePhoto: latestCommentResponse.data.items[0].snippet.topLevelComment.snippet.authorProfileImageUrl,
         };
-
-        // Fetch the total watch hours
-        const videosResponse = await axios.get(
-            `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=US&maxResults=100&key=${apiKey}`
-        );
-        const videos = videosResponse.data.items;
-        let totalWatchHours = 0;
-        videos.forEach((video) => {
-            const duration = video.contentDetails.duration;
-            const hours = parseInt(duration.match(/(\d+)H/)?.[1]) || 0;
-            const minutes = parseInt(duration.match(/(\d+)M/)?.[1]) || 0;
-            const seconds = parseInt(duration.match(/(\d+)S/)?.[1]) || 0;
-            const watchTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
-            totalWatchHours += watchTimeInSeconds / 3600;
-        });
 
         const data = {
             ifeiSub: parseInt(ifeiSub),
@@ -83,7 +70,6 @@ async function getSubscriberCount() {
             }),
             viewCount: parseInt(viewCount),
             videoCount: parseInt(videoCount),
-            totalWatchHours: parseFloat(totalWatchHours),
             mostView: mostView,
             latestVideo: latestVideo,
             latestComment: latestComment,

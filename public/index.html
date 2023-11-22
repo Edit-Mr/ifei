@@ -346,10 +346,10 @@
                     class="feifei"
                     onclick="window.open('https://www.youtube.com/@ifeisu_', '_blank')"
                 ></div>
-                <div>
+                <!-- <div>
                     <h2><i class="fa-brands fa-youtube"></i> 總影片時長</h2>
                     <h3 id="totalWatchHours"></h3>
-                </div>
+                </div> -->
                 <div class="two" id="comment">
                     <div>
                         <h2>
@@ -444,8 +444,8 @@
                         data.viewCount.toLocaleString() + " 次";
                     document.querySelector("#videoCount").textContent =
                         data.videoCount.toLocaleString() + " 支";
-                    document.querySelector("#totalWatchHours").textContent =
-                        data.totalWatchHours.toLocaleString() + " 小時";
+                    // document.querySelector("#totalWatchHours").textContent =
+                    //     data.totalWatchHours.toLocaleString() + " 小時";
                     document.querySelector("#comment h3").textContent =
                         "「" +
                         data.latestComment.comment +
