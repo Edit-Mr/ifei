@@ -99,7 +99,8 @@
                 <h3
                     id="viewCount"
                     class="bigNumber aos fadeIn count"
-                    unit=""     amount="0"
+                    unit=""
+                    amount="0"
                 ></h3>
             </section>
             <section>
@@ -116,10 +117,8 @@
                 <div>
                     <i class="fa-solid fa-quote-left"></i>
                     <h3 class="aos fadeIn"></h3>
-                    <div>
-                        <h4 class="aos fadeIn"></h4>
-                        <i class="fa-solid fa-quote-right"></i>
-                    </div>
+                    <h4 class="aos fadeIn"></h4>
+                    <i class="fa-solid fa-quote-right"></i>
                 </div>
             </section>
             <section class="two" id="latestVideo">
@@ -291,7 +290,7 @@
             function updateCount(aosElement) {
                 var count = 0;
                 var targetCount = aosElement.getAttribute("amount");
-                if(targetCount == 0) return;
+                if (targetCount == 0) return;
                 aosElement.classList.add("over");
                 var unit = aosElement.getAttribute("unit");
                 const each = Math.floor(targetCount / 20);

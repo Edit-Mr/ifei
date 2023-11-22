@@ -140,6 +140,7 @@ section h3 {
 
 .sub > h2 {
     text-align: center;
+    margin-bottom: 1rem;
 }
 .line.ed > div {
     width: var(--width);
@@ -150,6 +151,7 @@ section h3 {
     height: 1rem;
     background: #fff;
     position: relative;
+    margin:0 1rem;
 }
 .line div {
     background: red;
@@ -172,13 +174,10 @@ section h3 {
 #comment > div {
     flex-grow: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-}
-#comment > div > div {
-    width: 100%;
 }
 .fa-quote-left,
 .fa-quote-right {
@@ -197,12 +196,12 @@ section h3 {
     font-size: min(4vw, 40px);
     margin-right: 1em;
 }
-section img{
-width: min(100%, 50vh);
+section img {
+    width: min(100%, 50vh);
 }
-span{
+span {
     display: block;
-    margin-bottom: .2em;
+    margin-bottom: 0.2em;
 }
 /* footer */
 a {
@@ -223,17 +222,14 @@ footer {
     width: 100%;
     text-align: center;
 }
-@media (width < 40rem) {
-    /* .sub {
+@media (width < 900px) {
+    .sub-container {
         flex-wrap: wrap;
-        height: unset;
-        padding: 1.5rem;
     }
     .line {
-        order: 1;
         width: 100%;
-        min-width: 15rem;
-    } */
+        min-width: 25rem;
+    }
     .ceylan,
     .ifei {
         text-align: center;
