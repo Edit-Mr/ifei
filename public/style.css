@@ -35,6 +35,7 @@ main {
 }
 h1 {
     clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+    color: #ff0000;
 }
 
 h1,
@@ -48,8 +49,8 @@ h1,
     position: absolute;
     clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
     color: transparent;
-    background: -webkit-linear-gradient(177deg, black 53%, #fff 65%);
-    background: linear-gradient(177deg, black 53%, #fff 65%);
+    background: -webkit-linear-gradient(177deg, black 53%, #ff0000 65%);
+    background: linear-gradient(177deg, black 53%, #ff0000 65%);
     background-clip: text;
     -webkit-background-clip: text;
     transform: translateX(-0.02em);
@@ -223,6 +224,9 @@ footer {
     margin: 1rem 0.25rem;
     font-size: 5rem;
 }
+.social .small-social i{
+    font-size: 3rem;
+}
 .full-width {
     width: 100%;
     text-align: center;
@@ -251,5 +255,5 @@ footer {
     z-index: -1;
     object-fit: cover;  
     mix-blend-mode: add;
-    filter: brightness(0.5) opacity(0.9);    
+    filter: brightness(0.4) opacity(0.9);    
 }

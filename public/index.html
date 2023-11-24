@@ -92,12 +92,7 @@
                         <h3 id="ceylanSub"></h3>
                     </div>
                 </div>
-                <h2
-                    class="aos fadeIn"
-                    amount="0"
-                    unit="%"
-                    id="prograss"
-                ></h2>
+                <h2 class="aos fadeIn" amount="0" unit="%" id="prograss"></h2>
             </section>
 
             <section>
@@ -143,23 +138,21 @@
                 <h2 class="full-width">支持蘇裔非</h2>
                 <div class="full-width aos fadeIn">
                     <a href="https://www.youtube.com/@ifeisu_">
-                        <i class="fa-brands fa-youtube"></i></a
-                    ><a href="https://instagram.com/ifeisu_"
-                        ><i class="fa-brands fa-instagram"></i></a
-                    ><a href="https://discord.gg/ifeisu">
-                        <i class="fa-brands fa-discord"></i></a
-                    ><a href="https://twitter.com/ifeisu_"
-                        ><i class="fa-brands fa-x-twitter"></i
+                        <i class="fa-brands fa-youtube"></i
                     ></a>
                     <a href="mailto:ifei.su@icloud.com"
                         ><i class="fa-regular fa-envelope"></i
                     ></a>
-                    <a href="https://www.tiktok.com/@ifeisu07">
-                        <i class="fa-brands fa-tiktok"></i
-                    ></a>
-                    <a href="https://www.twitch.tv/ifeisu"
-                        ><i class="fa-brands fa-twitch"></i
-                    ></a>
+
+                    <div class="small-social">
+                        <a href="https://instagram.com/ifeisu_"
+                            ><i class="fa-brands fa-instagram"></i></a
+                        ><a href="https://discord.gg/ifeisu">
+                            <i class="fa-brands fa-discord"></i></a
+                        ><a href="https://twitter.com/ifeisu_"
+                            ><i class="fa-brands fa-x-twitter"></i
+                        ></a>
+                    </div>
                 </div>
             </section>
             <footer>
@@ -204,8 +197,14 @@
                     document
                         .querySelector("#viewCount")
                         .setAttribute("amount", data.viewCount);
-                        document.querySelector("#prograss").setAttribute("amount", data.ifeiSub / data.ceylanSub*100);
-                        document.querySelector("#prograss").innerHTML="已達成"+data.ifeiSub / data.ceylanSub * 100 + "%";
+                    document
+                        .querySelector("#prograss")
+                        .setAttribute(
+                            "amount",
+                            (data.ifeiSub / data.ceylanSub) * 100
+                        );
+                    document.querySelector("#prograss").innerHTML =
+                        "已達成" + (data.ifeiSub / data.ceylanSub) * 100 + "%";
                     document
                         .querySelector("#videoCount")
                         .setAttribute("amount", data.videoCount);
