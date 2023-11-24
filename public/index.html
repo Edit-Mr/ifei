@@ -92,6 +92,12 @@
                         <h3 id="ceylanSub"></h3>
                     </div>
                 </div>
+                <h2
+                    class="aos fadeIn"
+                    amount="0"
+                    unit="%"
+                    id="prograss"
+                ></h2>
             </section>
 
             <section>
@@ -157,13 +163,12 @@
                 </div>
             </section>
             <footer>
-                <div id="date"></div>
-                每半小時更新資料<br />
                 © 2023 <a href="https://elvismao.com/">毛哥EM</a>,
                 <a href="https://www.youtube.com/@ifeisu_">蘇裔非</a> All Rights
                 Reserved
             </footer>
         </main>
+        <img src="glitch.gif" class="glitch" />
         <script>
             const countdownElement = document.querySelector("#countdown");
             const targetDate = new Date("2024-11-12");
@@ -199,6 +204,8 @@
                     document
                         .querySelector("#viewCount")
                         .setAttribute("amount", data.viewCount);
+                        document.querySelector("#prograss").setAttribute("amount", data.ifeiSub / data.ceylanSub*100);
+                        document.querySelector("#prograss").innerHTML="已達成"+data.ifeiSub / data.ceylanSub * 100 + "%";
                     document
                         .querySelector("#videoCount")
                         .setAttribute("amount", data.videoCount);
@@ -249,9 +256,6 @@
                                             class="fa-regular fa-clock"
                                         ></i> ` +
                         data.mostView.releaseDate;
-                    console.log(data.date);
-                    document.querySelector("#date").innerHTML =
-                        "更新日期: " + data.date;
                     document.querySelector(".sub-container").style =
                         "--width: " +
                         (data.ifeiSub / (data.ifeiSub + data.ceylanSub)) * 100 +
