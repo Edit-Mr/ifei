@@ -13,9 +13,11 @@ body {
         sans-serif;
     line-height: 1.5;
     overflow-x: hidden;
+    background: #013008;
 }
 main {
     min-height: 100svh;
+    overflow-x: hidden;
 }
 .aos {
     transition: transform 1s ease-out, filter 1s ease-out;
@@ -247,6 +249,7 @@ footer {
     height: 100vh;
     pointer-events: none;
     z-index: -1;
-    object-fit: cover;
+    object-fit: cover;  
     mix-blend-mode: add;
+    filter: brightness(0.5) opacity(0.9);    
 }
