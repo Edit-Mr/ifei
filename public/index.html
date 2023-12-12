@@ -92,12 +92,7 @@
                         <h3 id="ceylanSub"></h3>
                     </div>
                 </div>
-                <h2
-                    class="aos fadeIn"
-                    amount="0"
-                    unit="%"
-                    id="prograss"
-                ></h2>
+                <h2 class="aos fadeIn" amount="0" unit="%" id="prograss"></h2>
             </section>
 
             <section>
@@ -200,8 +195,14 @@
                     document
                         .querySelector("#viewCount")
                         .setAttribute("amount", data.viewCount);
-                        document.querySelector("#prograss").setAttribute("amount", data.ifeiSub / data.ceylanSub*100);
-                        document.querySelector("#prograss").innerHTML="已達成"+data.ifeiSub / data.ceylanSub * 100 + "%";
+                    document
+                        .querySelector("#prograss")
+                        .setAttribute(
+                            "amount",
+                            (data.ifeiSub / data.ceylanSub) * 100
+                        );
+                    document.querySelector("#prograss").innerHTML =
+                        "已達成" + (data.ifeiSub / data.ceylanSub) * 100 + "%";
                     document
                         .querySelector("#videoCount")
                         .setAttribute("amount", data.videoCount);

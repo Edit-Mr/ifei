@@ -13,9 +13,11 @@ body {
         sans-serif;
     line-height: 1.5;
     overflow-x: hidden;
+    background: #013008;
 }
 main {
     min-height: 100svh;
+    overflow-x: hidden;
 }
 .aos {
     transition: transform 1s ease-out, filter 1s ease-out;
@@ -33,6 +35,7 @@ main {
 }
 h1 {
     clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+    color: #ff0000;
 }
 
 h1,
@@ -46,8 +49,8 @@ h1,
     position: absolute;
     clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
     color: transparent;
-    background: -webkit-linear-gradient(177deg, black 53%, #fff 65%);
-    background: linear-gradient(177deg, black 53%, #fff 65%);
+    background: -webkit-linear-gradient(177deg, black 53%, #ff0000 65%);
+    background: linear-gradient(177deg, black 53%, #ff0000 65%);
     background-clip: text;
     -webkit-background-clip: text;
     transform: translateX(-0.02em);
@@ -183,7 +186,7 @@ section h3 {
 .fa-quote-right {
     font-size: min(12vw, 120px);
     width: 100%;
-    color: #2d2d2d;
+    color: #8c8c8c;
 }
 .fa-quote-right {
     text-align: right;
@@ -221,6 +224,9 @@ footer {
     margin: 1rem 0.25rem;
     font-size: 5rem;
 }
+.social .small-social i{
+    font-size: 3rem;
+}
 .full-width {
     width: 100%;
     text-align: center;
@@ -247,6 +253,7 @@ footer {
     height: 100vh;
     pointer-events: none;
     z-index: -1;
-    object-fit: cover;
+    object-fit: cover;  
     mix-blend-mode: add;
+    filter: brightness(0.4) opacity(0.9);    
 }
