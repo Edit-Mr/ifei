@@ -6,4 +6,4 @@
 
 ## 使用方法:
 
-GET: [ifeiceylan.com/data.json](https://ifeiceylan.com/data.json)
+GET: [ifeiceylan.com/data.json](https://ifei.work/data.json)
