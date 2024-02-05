@@ -19,7 +19,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: url("background.webp");
+    background: url("/debate/background.webp");
     background-size: cover;
 }
 main {
