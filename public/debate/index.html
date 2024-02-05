@@ -1,0 +1,76 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>辯論:</title>
+        <link rel="stylesheet" href="style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="theme-color" content="#494949" />
+        <meta name="description" content="辯論: 一個沒有底線的辯論節目。" />
+        <meta name="author" content="毛哥EM" />
+        <meta name="keywords" content="辯論, 蘇裔非, 毛哥EM" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="食物探析 - 一個沒有底線的辯論節目" />
+        <meta property="og:url" content="https://ifei.work/date" />
+        <meta
+            property="og:site_name"
+            content="食物探析 - 一個沒有底線的辯論節目"
+        />
+        <meta
+            property="og:description"
+            content="辯論: 一個沒有底線的辯論節目。"
+        />
+        <meta property="og:locale" content="zh-TW" />
+        <meta property="article:author" content="毛哥EM" />
+    </head>
+    <body>
+        <div class="container">
+            <main>
+                <header>
+                    <h1>辯論:</h1>
+                    <h2>一個沒有底線的辯論節目</h2>
+                </header>
+                <section id="intro">
+                    <h2>
+                        如果一場辯論沒有
+                        <div id="no">
+                            <div class="hide">規則</div>
+                            <div class="noWhat">
+                                <div>規則</div>
+                                <div>底線</div>
+                                <div>人才</div>
+                                <div>資金</div>
+                                <div>流量</div>
+                            </div>
+                        </div>
+                    </h2>
+                </section>
+                <section id="current">
+                    <div>
+                        <img
+                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                            id="thumbnail"
+                        /><img src="arrow.png" alt="" class="arrow" />
+                        <div class="new">最新一集</div>
+                    </div>
+                    <h3>辯論: 亂倫該不該合法</h3>
+                </section>
+                <a href="https://debate.ifei.work" id="join">參與現場投票</a>
+            </main>
+        </div>
+        <script>
+            window.addEventListener("scroll", function () {
+                var lineHeight = document
+                    .querySelector(".noWhat > div:first-child")
+                    .getBoundingClientRect().height;
+                var noWhat = document.querySelector(".noWhat");
+                noWhat.style.transform = `translateY(${
+                    -Math.floor(window.scrollY / 300) * lineHeight
+                }px)`;
+            });
+        </script>
+    </body>
+</html>

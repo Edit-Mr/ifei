@@ -1,0 +1,144 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Noto+Serif+TC:wght@200;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: #4f4f4f;
+    position: relative;
+    height: calc(100vh + 1200px);
+}
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url("background.webp");
+    background-size: cover;
+}
+main {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    margin: auto;
+    padding: 1em;
+    position: relative;
+}
+header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-family: "Noto Serif TC", serif;
+}
+h1 {
+    font-size: min(15vw, 90px);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: #000 2px 2px 8px, #d2a11b 0 0 3px;
+    margin-bottom: 1rem;
+    text-align: center;
+    flex-grow: 1;
+    mix-blend-mode: overlay;
+}
+h1 + h2 {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: min(3vw, 18px);
+    color: #686868;
+    text-shadow: #3030308b 0 0 1em;
+}
+#intro h2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5em;
+    overflow: hidden;
+    margin-top: 2em;
+    mix-blend-mode: difference;
+    color: #fff;
+    font-size: min(4vw, 24px);
+}
+#no {
+    position: relative;
+    font-size: 1.5em;
+}
+.hide {
+    visibility: hidden;
+}
+.hide + div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#current {
+    margin-block: 2em;
+}
+#current > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+#thumbnail {
+    width: min(calc(50vw - 1em), calc(300px - 1em));
+    aspect-ratio: 16 / 9;
+    background: #4627277b;
+    box-shadow: #000 0 0 0.5em;
+    border-radius: 1em;
+    outline: transparent;
+    border: none;
+    margin-right: 1em;
+}
+h3 {
+    color: #fff;
+    font-weight: 400;
+}
+.new {
+    color: #eae9e1;
+    text-shadow: #d2a11b93 0 0 1px;
+    font-size: min(5vw, 30px);
+}
+#join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    font-size: min(4vw, 24px);
+    background: #00000093;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.8em 2.5em;
+    color: #e7e7e7;
+    border-radius: 0.5em;
+    box-shadow: #000 0 0 7px;
+    display: block;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 200;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+#join:hover{
+    background: #000000b3;
+}
+
+#join:active{
+    background: #c4c4c4c3;
+    color: #000;
+}
+
+.noWhat {
+    transition: transform 0.2s;
+}
+.arrow{
+    width: min(20vw, 120px);
+    margin-bottom: 2em;
+}

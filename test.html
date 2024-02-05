@@ -1,0 +1,70 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EM Clipboard</title>
+        <style>
+            body {
+                background-color: #000;
+                color: #fff;
+                font-family: sans-serif;
+                font-size: 1.5rem;
+                text-align: center;
+                min-height: 100svh;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body onclick="copyToClipboard()">
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get("a");
+            if (!token) {
+                document.body.innerHTML = "No token provided";
+            } else {
+                const apiUrl =
+                    "https://api.github.com/repos/Edit-Mr/clipboard-api/contents/clip.txt";
+                let decodedContent;
+                function copyToClipboard() {
+                    const textarea = document.createElement("textarea");
+                    textarea.value = decodedContent;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(textarea);
+                    window.close();
+                }
+                fetch(apiUrl, {
+                    headers: {
+                        Authorization: `token ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(
+                                `Network response was not ok: ${response.status}`
+                            );
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.content) {
+                            decodedContent = atob(data.content);
+                            document.body.innerHTML = decodedContent;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+            }
+        </script>
+    </body>
+</html>
