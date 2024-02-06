@@ -12,7 +12,7 @@ body {
     font-family: "Noto Sans TC", sans-serif;
     background-color: #4f4f4f;
     position: relative;
-    height: calc(100vh + 1200px);
+    height: calc(100lvh + 1200px);
 }
 .container {
     position: fixed;
@@ -23,7 +23,7 @@ body {
     background-size: cover;
 }
 main {
-    min-height: 100dvh;
+    min-height: 100lvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
