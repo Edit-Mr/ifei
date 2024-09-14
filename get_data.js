@@ -74,6 +74,8 @@ async function getSubscriberCount() {
                 latestCommentResponse = await axios.get(
                     `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${video.id.videoId}&order=time&maxResults=1&key=${apiKey}`
                 );
+                // check if has comments
+                if (latestCommentResponse.data.items.length === 0) continue;
                 console.log(latestCommentResponse.data.items[0].snippet);
                 latestComment = {
                     comment:
