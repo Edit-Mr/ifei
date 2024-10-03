@@ -31,18 +31,21 @@ h1 {
   text-align: center;
 }
 i {
-  margin-right: 0.1rem;
+  margin-right: auto;
+  font-size: 1.5rem;
+  width: 2rem;
+  text-align: center;
 }
 main > a {
   display: block;
-  text-align: center;
   text-decoration: none;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   margin-bottom: 1.5rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   transition: 0.3s;
   color: #000;
   background-color: #ffffff;
+  display: flex;
 }
 
 main a:hover {
@@ -52,7 +55,11 @@ main a:hover {
 main a:active {
   background-color: #e0e0e0;
 }
-
+main > a > div {
+  flex: 1;
+  text-align: center;
+  margin-right: 2rem;
+}
 .head {
   width: 6rem;
   margin: auto;
