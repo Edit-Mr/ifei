@@ -117,7 +117,7 @@ async function getSubscriberCount() {
             latestComment: latestComment,
         };
 
-        fs.writeFileSync("./public/data.json", JSON.stringify(data, null, 2));
+        fs.writeFileSync("./public/ceylan/data.json", JSON.stringify(data, null, 2));
     } catch (error) {
         console.error("Error:", error.message);
         process.exit(1);
