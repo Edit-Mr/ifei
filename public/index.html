@@ -64,7 +64,7 @@
             <header>
                 <img src="/img/sky.webp" alt="" class="sky" />
                 <h1>ifeisu</h1>
-                <img src="/img/floor.webp" alt="" class="floor" />
+                <div class="floor"></div>
                 <p class="aos fadeIn">
                     A freelance artist based in Taipei,<br />
                     specializing in creative storytelling through sound and
@@ -76,7 +76,7 @@
                     Start making good shit since
                     <span>2020</span>
                 </h2>
-                <p>
+                <p class="aos fadeIn">
                     A talented music producer and composer, ifei has gained
                     millions of views online and collaborated with major
                     Taiwanese brands. Skilled in pop music composition, media
@@ -87,11 +87,11 @@
             </section>
             <section id="colab">
                 <h2 class="aos fadeIn">Worked with</h2>
-                <div>
-                    <img src="" alt="" /><img src="" alt="" /><img
-                        src=""
-                        alt=""
-                    /><img src="" alt="" />
+                <div class="aos fadeIn">
+                    <img src="/img/brands/PTS.png" alt="" class="brand-pts" />
+                    <img src="/img/brands/傳說對決.png" alt="" />
+                    <img src="/img/brands/ShinKong_Mitsukoshi.svg" alt="" />
+                    <img src="/img/brands/Zero2One.png" alt="" />
                 </div>
             </section>
             <section id="skills">
@@ -162,7 +162,7 @@
                 aosElements.forEach(function (aosElement) {
                     aosElement.classList.toggle(
                         "ed",
-                        isElementInViewport(aosElement)
+                        !isElementInViewport(aosElement)
                     );
                 });
             }

@@ -13,8 +13,9 @@
 }
 body {
     background-color: #000;
-    color: #fff;
+    color: #ebeae3;
     --scrollTop: 0px;
+    --base-size: max(2rem, 16vw);
 }
 
 .noise {
@@ -28,7 +29,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 10;
     animation: 250ms steps(10, end) 0s infinite alternate-reverse none running
         noise-animation;
 }
@@ -67,10 +68,11 @@ body {
 
 header {
     position: relative;
-    --base-size: max(2rem, 16vw);
     height: 100svh;
     overflow: hidden;
+    background-color: #333830;
 }
+
 img {
     display: block;
 }
@@ -88,7 +90,8 @@ header p {
     position: absolute;
     width: 100%;
     bottom: 4rem;
-    transform: translateY(calc(var(--scrollTop) / -3));
+    z-index: 11;
+    transform: translateY(calc(var(--scrollTop) / -4));
 }
 
 h1 {
@@ -107,13 +110,13 @@ h1 {
     left: 0;
     object-fit: cover;
     width: 100%;
-    height: calc(100vh - 10 * (1vw + 1vh));
+    height: calc(100vh - 5 * (1vw + 1vh));
     transform: translateY(calc(var(--scrollTop) / -10));
 }
 
 .floor {
     position: absolute;
-    background: url("/img/floor.png") no-repeat center bottom / cover;
+    background: url("/img/floor.webp") no-repeat center top / cover;
     width: 100%;
     bottom: 0rem;
     height: calc(40 * (1vw + 1vh));
@@ -121,6 +124,121 @@ h1 {
     transform: translateY(calc(var(--scrollTop) / -5));
 }
 
-section{
+.floor::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(0deg, #333830, rgba(0, 0, 0, 0));
+    z-index: 3;
+}
+
+section {
+    /* min-height: 100svh; */
+}
+
+#about {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    padding-top: 5rem;
+    margin-top: -3rem;
     min-height: 100svh;
+    background: linear-gradient(
+            #333830,
+            transparent 4rem,
+            transparent calc(100% - 4rem),
+            #000
+        ),
+        url(/img/skillbg.webp) no-repeat right top / cover;
+}
+
+#about h2 span {
+    display: block;
+    font-size: calc(var(--base-size) / 2);
+}
+#about p {
+    margin-top: 10rem;
+    max-width: 40rem;
+    z-index: 11;
+    position: relative;
+}
+
+#colab {
+    padding: 2rem;
+}
+#colab div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#colab img {
+    width: 10rem;
+    filter: brightness(1000);
+}
+
+#colab .brand-pts {
+    width: 6rem;
+}
+
+#colab h2 {
+    text-align: center;
+}
+
+#skills::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: max(20rem, calc(100vw - 20rem));
+    height: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0.207), rgb(0, 0, 0) 80%),
+        url("/img/studio.webp");
+    background-position: right;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#skills {
+    min-height: 100svh;
+    position: relative;
+    padding: 2rem;
+}
+
+#skills h2 {
+    font-size: calc(var(--base-size) / 6);
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+}
+
+#skills ul {margin-left: 2rem;
+    list-style-type: none;
+    font-size: calc(var(--base-size) / 5);
+}
+
+#skills h2::after{
+    content: "";
+    display: block;
+    width: 2rem;
+    height: .5rem;
+    background-color: #ebeae3;
+    margin-top: 1rem;
+}
+ul li::before {
+    content: "- ";
+}
+
+.fadeIn {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.fadeIn.ed {
+    opacity: 1;
 }
