@@ -146,6 +146,7 @@ section {
     padding-top: 5rem;
     margin-top: -3rem;
     min-height: 100svh;
+    /* linear-gradient(#020f0a, transparent 3rem) no-repeat top right/50%, */
     background: linear-gradient(
             #333830,
             transparent 4rem,
@@ -167,7 +168,7 @@ section {
 }
 
 #colab {
-    padding: 2rem;
+    padding: 3rem 2rem;
 }
 #colab div {
     display: flex;
@@ -217,21 +218,77 @@ section {
     margin-top: 4rem;
 }
 
-#skills ul {margin-left: 2rem;
+#skills ul {
+    margin-left: 2rem;
     list-style-type: none;
     font-size: calc(var(--base-size) / 5);
 }
 
-#skills h2::after{
+#skills h2::after {
     content: "";
     display: block;
     width: 2rem;
-    height: .5rem;
+    height: 0.5rem;
     background-color: #ebeae3;
     margin-top: 1rem;
 }
 ul li::before {
     content: "- ";
+}
+
+#projects h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: calc(var(--base-size) / 6);
+}
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 70rem;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.project {
+    height: 11.8125rem;
+    width: 21rem;
+    background-color: #333830;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem 0.5rem #000;
+    transition: transform 0.5s;
+}
+
+.project .content {
+    display: none;
+}
+
+footer {
+    background: linear-gradient(#000, transparent 8rem),
+        url("/img/music.webp") no-repeat center/cover;
+    position: relative;
+    height: 30rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem 1.5rem;
+}
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.socials {
+    display: flex;
+    gap: 0.5rem;
+}
+
+a {
+    color: #fff;
 }
 
 .fadeIn {
