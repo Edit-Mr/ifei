@@ -1,12 +1,18 @@
 /** @format */
 
+@font-face {
+    font-family: "League Spartan";
+    src: url("/img/LeagueSpartan-VF.woff2") format("woff2");
+    font-display: swap;
+}
+
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "League Spartan", Arial, Helvetica, sans-serif;
     --mouseX: 877px;
     --mouseY: 270px;
 
     overflow: hidden auto;
-    font-weight: 900;
+    font-weight: 600;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,54 +21,28 @@ body {
     background-color: #000;
     color: #ebeae3;
     --scrollTop: 0px;
-    --base-size: max(2rem, 16vw);
+    --base-size: max(2rem, 22vw);
 }
 
 .noise {
-    background: url("/img/noise.png");
-    pointer-events: none;
-    filter: opacity(0.2) brightness(1.5);
-    background-size: 400px 400px;
-    mix-blend-mode: multiply;
-    width: 100%;
-    height: 100vh;
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    animation: 400ms steps(10, end) 0s infinite alternate-reverse none running
-        noise-animation;
+    pointer-events: none;
+    inset: -200%;
+    background-image: url("img/noise.png");
+    opacity: 0.22;
+    z-index: 100;
+    /* pointer-events: none; */
+
+    animation: shift 0.2s linear infinite both;
 }
-@keyframes noise-animation {
+
+@keyframes shift {
     0% {
-        background-position: 0% 0%;
+        transform: translateX(10%) translateY(10%);
     }
-    10% {
-        background-position: -5% -5%;
-    }
-    20% {
-        background-position: -10% 5%;
-    }
-    30% {
-        background-position: 5% -10%;
-    }
-    40% {
-        background-position: -5% 15%;
-    }
-    50% {
-        background-position: -10% 5%;
-    }
-    60% {
-        background-position: 5% 5%;
-    }
-    70% {
-        background-position: 0% 10%;
-    }
-    80% {
-        background-position: -5% -5%;
-    }
-    90% {
-        background-position: 10% 5%;
+
+    100% {
+        transform: translateX(-10%) translateY(-10%);
     }
 }
 
@@ -81,8 +61,8 @@ header img {
     pointer-events: none;
 }
 header p {
-    font-size: 1.5rem;
-
+    font-size: min(1.5rem, 5vw);
+    padding: 1em;
     text-align: center;
 }
 
@@ -99,6 +79,7 @@ h1 {
     text-transform: uppercase;
     position: absolute;
     top: 53%;
+    font-weight: 900;
     left: 50%;
     transform: translate(-50%, calc(-50% + var(--scrollTop) / 8));
     mix-blend-mode: difference;
@@ -164,6 +145,7 @@ section {
     margin-top: 10rem;
     max-width: 40rem;
     z-index: 11;
+    font-size: 1.5rem;
     position: relative;
 }
 
@@ -201,6 +183,7 @@ section {
     height: 100%;
     background: radial-gradient(rgba(0, 0, 0, 0.207), rgb(0, 0, 0) 80%),
         url("/img/studio.webp");
+    background-size: auto 100%;
     background-position: right;
     pointer-events: none;
     z-index: -1;
@@ -213,7 +196,7 @@ section {
 }
 
 #skills h2 {
-    font-size:max(1.5rem,calc(var(--base-size) / 6));
+    font-size: max(1.5rem, calc(var(--base-size) / 6));
     margin-bottom: 4rem;
     margin-top: 4rem;
 }
@@ -221,7 +204,7 @@ section {
 #skills ul {
     margin-left: 2rem;
     list-style-type: none;
-    font-size:max(1.5rem,calc(var(--base-size) / 5));
+    font-size: max(1.5rem, calc(var(--base-size) / 5));
 }
 
 #skills h2::after {
@@ -260,9 +243,32 @@ ul li::before {
     box-shadow: 0 0 1rem 0.5rem #000;
     transition: transform 0.5s;
     overflow: hidden;
+    position: relative;
 }
 
-.project:hover img{
+.project div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 3;
+    padding: 1rem;
+    line-height: 1.5;
+}
+
+.project:hover div {
+    opacity: 1;
+}
+
+.project:hover img {
     transform: scale(1.1);
 }
 
